@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Домашняя страница БД</h1>
+
+  <p>Вы зашли на <em>DjanhoDB</em></p>
+
+<h2>Изменяющиеся данные</h2>
+
+  <p>В БД содержится следующее количество записей:</p>
+  <ul>
+    <li><strong>Facultet:</strong> {{ num_facultet }}</li>
+    <li><strong>Napravlenie:</strong> {{ num_napravlenie }}</li>
+    <li><strong>Group:</strong> {{ num_group }}</li>
+    <li><strong>Rabotnik:</strong> {{ num_rabotnik }}</li>
+    <li><strong>Predmet:</strong> {{ num_predmet }}</li>
+    <li><strong>Forma_kontrol9:</strong> {{ num_forma_kontrol9 }}</li>
+    <li><strong>Studenti:</strong> {{ num_studenti }}</li>
+    <li><strong>Jurnal:</strong> {{ num_jurnal }}</li>
+   
+  </ul>
+{% endblock %}

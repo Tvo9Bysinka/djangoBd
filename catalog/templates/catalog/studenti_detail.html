@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Title: {{studenti.last_name}} {{studenti.first_name}} {{studenti.middle_name}}</h1>
+  <li><a href="{% url 'studenti_update' studenti.pk %}">Изменить </a></li>
+  <li><a href="{% url 'studenti_delete' studenti.pk %}">Удалить</a></li>
+  <div style="margin-left:20px;margin-top:20px">
+    <h4>Журнал</h4>
+
+    {% for copy in studenti.jurnal_set.all %}
+    <hr>
+    <p><strong>Id_predmeta:</strong> <a href="{% url 'predmet-detail' copy.id_predmeta.pk %}">{{ copy.id_predmeta }}</a></p>
+    <p><strong>Id_rabotnika:</strong> <a href="{% url 'rabotnik-detail' copy.id_rabotnika.pk %}">{{ copy.id_rabotnika }}</a></p>
+    <p><strong>Data_propyskov:</strong> {{ copy.data_propyskov }}</p>
+    <p><strong>Propyski:</strong> {{copy.propyski}}</p>
+    <p><strong>Opisanie:</strong> {{copy.opisanie }}</p>
+    <p class="text-muted"><strong>Id:</strong> {{copy.id}}</p>
+    {% endfor %}
+  </div>
+{% endblock %}

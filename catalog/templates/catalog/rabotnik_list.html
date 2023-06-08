@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>rabotnik List</h1>
+    {% if user.is_authenticated %}
+          <li><a href="{% url 'rabotnik_create'%}"> Добавить Работника</a></li>
+    {% endif %}
+    {% if rabotnik_list %}
+    <ul>
+
+      {% for rabotnik in rabotnik_list %}
+      <li>
+        <a href="{{ rabotnik.get_absolute_url }}"> {{rabotnik.last_name}} {{rabotnik.first_name}} {{rabotnik.middle_name}}</a>
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no rabotnik in the library.</p>
+    {% endif %} 
+{% endblock %}

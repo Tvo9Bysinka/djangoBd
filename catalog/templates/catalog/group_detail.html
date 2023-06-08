@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Title: {{ group.name_group }}</h1>
+  <li><a href="{% url 'group_update' group.pk %}">Изменить </a></li>
+  <li><a href="{% url 'group_delete' group.pk %}">Удалить</a></li>
+  <p><strong>Napravlenie:</strong> <a href="{% url 'napravlenie-detail' group.id_napravlenie.pk %}">{{ group.id_napravlenie }}</a></p> 
+
+  <div style="margin-left:20px;margin-top:20px">
+    <h4>Students</h4>
+
+    {% for copy in group.studenti_set.all %}
+    <hr>
+    <p><strong>Last_name:</strong> {{copy.last_name}}</p>
+    <p><strong>First_name:</strong> {{copy.first_name}}</p>
+    <p><strong>Middle_name:</strong> {{copy.middle_name}}</p>
+    <p class="text-muted"><strong>Id:</strong> {{copy.id}}</p>
+    {% endfor %}
+  </div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Title: {{ forma_kontrol9.vid_formi }}</h1>
+  <li><a href="{% url 'forma_kontrol9_update' forma_kontrol9.pk %}">Изменить </a></li>
+  <li><a href="{% url 'forma_kontrol9_delete' forma_kontrol9.pk %}">Удалить</a></li>
+  <div style="margin-left:20px;margin-top:20px">
+    <h4>Предмет:</h4>
+
+    {% for copy in forma_kontrol9.predmet_set.all %}
+    <hr>
+    <p><strong>Name:</strong> <a href="{% url 'predmet-detail' copy.id_forma_kontrol9.pk %}">{{copy.name_predmeta}}</a></p> 
+    <p class="text-muted"><strong>Id:</strong> {{copy.id}}</p>
+    {% endfor %}
+  </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Студенты List</h1>
+    {% if user.is_authenticated %}
+          <li><a href="{% url 'studenti_create'%}"> Добавить Студента</a></li>
+    {% endif %}
+    {% if studenti_list %}
+    <ul>
+
+      {% for studenti in studenti_list %}
+      <li>
+        <a href="{{ studenti.get_absolute_url }}"> {{studenti.last_name}} {{studenti.first_name}} {{studenti.middle_name}}</a>
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no studentik in the library.</p>
+    {% endif %} 
+{% endblock %}

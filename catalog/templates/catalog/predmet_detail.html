@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Title: {{ predmet.name_predmeta }}</h1>
+  <li><a href="{% url 'predmet_update' predmet.pk %}">Изменить </a></li>
+  <li><a href="{% url 'predmet_delete' predmet.pk %}">Удалить</a></li>
+  <p><strong>Forma_kontrol9:</strong> <a href="{% url 'forma_kontrol9-detail' predmet.id_forma_kontrol9.pk %}">{{ predmet.id_forma_kontrol9 }}</a></p>
+
+
+  <div style="margin-left:20px;margin-top:20px">
+    <h4>Журнал</h4>
+
+    {% for copy in predmet.jurnal_set.all %}
+    <hr>
+    <p><strong>Id_rabotnika:</strong> <a href="{% url 'rabotnik-detail' copy.id_rabotnika.pk %}">{{ copy.id_rabotnika }}</a></p>
+    <p><strong>Id_studentov:</strong> <a href="{% url 'studenti-detail' copy.id_studentov.pk %}">{{ copy.id_studentov }}</a></p>
+    <p><strong>Data_propyskov:</strong> {{ copy.data_propyskov }}</p>
+    <p><strong>Propyski:</strong> {{copy.propyski}}</p>
+    <p><strong>Opisanie:</strong> {{copy.opisanie }}</p>
+    <p class="text-muted"><strong>Id:</strong> {{copy.id}}</p>
+    {% endfor %}
+  </div>
+{% endblock %}

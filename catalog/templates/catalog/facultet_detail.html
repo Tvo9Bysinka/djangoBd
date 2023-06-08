@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Title: {{ facultet.name_faculteta }}</h1>
+  {% if user.is_authenticated %}
+    <li><a href="{% url 'facultet_update' facultet.pk %}">Изменить факультет</a></li>
+    <li><a href="{% url 'facultet_delete' facultet.pk %}">Удалить факультет</a></li>
+  {% endif %}
+  
+  
+  <div style="margin-left:20px;margin-top:20px">
+    <h4>Napravlenie</h4>
+
+    {% for copy in facultet.napravlenie_set.all %}
+    <hr>
+    
+
+    <p><strong>Name:</strong> <a href="{% url 'napravlenie-detail' copy.id_facultet.pk %}">{{ copy.name_napravlenie }}</a></p> 
+    <p class="text-muted"><strong>Id:</strong> {{copy.id}}</p>
+    {% endfor %}
+  </div>
+{% endblock %}

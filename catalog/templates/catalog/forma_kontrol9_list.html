@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Форма контроля List</h1>
+    {% if user.is_authenticated %}
+          <li><a href="{% url 'forma_kontrol9_create'%}">Добавить Форму контроля</a></li>
+    {% endif %}
+    {% if forma_kontrol9_list %}
+    <ul>
+
+      {% for forma_kontrol9 in forma_kontrol9_list %}
+      <li>
+        <a href="{{ forma_kontrol9.get_absolute_url }}">{{ forma_kontrol9.vid_formi }}</a>
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no forma_kontrol9s in the library.</p>
+    {% endif %} 
+
+
+{% endblock %}

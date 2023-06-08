@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Napravlenie List</h1>
+    {% if user.is_authenticated %}
+          <li><a href="{% url 'napravlenie_create'%}">Добавить Направление</a></li>
+        {% endif %}
+    {% if napravlenie_list %}
+    <ul>
+
+      {% for napravlenie in napravlenie_list %}
+      <li>
+        <a href="{{ napravlenie.get_absolute_url }}">{{ napravlenie.name_napravlenie }}</a> ({{napravlenie.id_facultet}})
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no napravlenies in the library.</p>
+    {% endif %}
+    
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Facultet List</h1>
+    {% if user.is_authenticated %}
+          <li><a href="{% url 'facultet_create'%}">Добавить факультет</a></li>
+    {% endif %}
+    {% if facultet_list %}
+    <ul>
+
+      {% for facultet in facultet_list %}
+      <li>
+        <a href="{{ facultet.get_absolute_url }}">{{ facultet.name_faculteta }}</a>
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no facultets in the library.</p>
+    {% endif %}
+    
+
+{% endblock %}

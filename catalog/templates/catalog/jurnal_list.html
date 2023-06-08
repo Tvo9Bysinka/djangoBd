@@ -1,0 +1,29 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Список Журнала</h1>
+    {% if user.is_authenticated %}
+    <li><a href="{% url 'jurnal_create'%}">Добавить Запись в журнал</a></li>
+    {% endif %}
+    {% if jurnal_list %}
+    <ul>
+
+      {% for jurnal in jurnal_list %}
+      <li>
+   
+    <p><strong>Id:</strong> {{ jurnal.id }}</p> 
+    <p><strong>Id_rabotnika:</strong> <a href="{% url 'rabotnik-detail' jurnal.id_rabotnika.pk %}">{{ jurnal.id_rabotnika }}</a></p> 
+    <p><strong>Id_predmeta:</strong> <a href="{% url 'predmet-detail' jurnal.id_predmeta.pk %}">{{ jurnal.id_predmeta }}</a></p>
+    <p><strong>Id_studentov:</strong> <a href="{% url 'studenti-detail' jurnal.id_studentov.pk %}">{{ jurnal.id_studentov }}</a></p>
+    <li><a href="{% url 'jurnal_update' jurnal.pk %}">Изменить </a></li>
+    <li><a href="{% url 'jurnal_delete' jurnal.pk %}">Удалить</a></li>
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no napravlenies in the library.</p>
+    {% endif %} 
+
+
+{% endblock %}

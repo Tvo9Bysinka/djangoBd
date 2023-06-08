@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Predmet List</h1>
+    {% if user.is_authenticated %}
+          <li><a href="{% url 'predmet_create'%}"> Добавить Предмет</a></li>
+    {% endif %}
+    {% if predmet_list %}
+    <ul>
+
+      {% for predmet in predmet_list %}
+      <li>
+        <a href="{{ predmet.get_absolute_url }}">{{ predmet.name_predmeta }}</a> ({{predmet.id_forma_kontrol9}})
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no predmets in the library.</p>
+    {% endif %} 
+{% endblock %}
